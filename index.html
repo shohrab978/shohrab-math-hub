@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>জ্ঞানপথ — গণিত, প্রযুক্তি ও শেখার ব্লগ</title>
+<meta name="description" content="গণিত, প্রযুক্তি ও শেখার কৌশল নিয়ে বাংলা ব্লগ। সবার জন্য বিনামূল্যে, সাথে এআই সহকারী।">
+<meta property="og:title" content="জ্ঞানপথ">
+<meta property="og:description" content="গণিত, প্রযুক্তি ও শেখার কৌশল নিয়ে বাংলা ব্লগ।">
+<meta name="theme-color" content="#2347d9">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&family=Noto+Serif+Bengali:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f7fb;--surface:#fff;--text:#0e1b3d;--muted:#566282;--line:#d9e0ee;--accent:#2347d9;--hi:#ffd54a;--on:#fff;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0b1226;--surface:#131c36;--text:#e9eeff;--muted:#9eabcc;--line:#243157;--accent:#8aa4ff;--hi:#ffd54a;--on:#0b1226;color-scheme:dark}}
+html{scroll-behavior:smooth}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.8 "Hind Siliguri","Noto Sans Bengali",system-ui,sans-serif}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);z-index:5}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:58px}
+.logo{font:700 22px "Noto Serif Bengali",serif;color:var(--text);text-decoration:none}
+nav a{margin-left:18px;color:var(--text);text-decoration:none;font-size:15px}
+.hero{padding:70px 0 44px;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:32px 32px;background-position:-1px -1px;border-bottom:1px solid var(--line)}
+.hero .wrap{background:linear-gradient(90deg,var(--bg) 70%,transparent)}
+.eq{font:italic 700 clamp(22px,4vw,30px) Georgia,serif;color:var(--accent);margin:0 0 12px}
+.hero h1{font:700 clamp(30px,6vw,48px)/1.3 "Noto Serif Bengali",serif;margin:0 0 14px;max-width:640px}
+.hero h1 mark{background:linear-gradient(transparent 60%,var(--hi) 60%);color:inherit}
+.hero p{color:var(--muted);max-width:560px;font-size:18px;margin:0 0 22px}
+.btn{display:inline-block;background:var(--accent);color:var(--on);border:0;border-radius:8px;padding:10px 20px;font:inherit;font-weight:600;cursor:pointer;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line);margin-left:8px}
+h2{font:700 26px "Noto Serif Bengali",serif;margin:46px 0 14px}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;align-items:center}
+.tools input{flex:1;min-width:180px;background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:9px 12px;font:inherit}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:20px;padding:3px 14px;font:inherit;font-size:14px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--accent);color:var(--on);border-color:var(--accent)}
+.post{border-top:1px solid var(--line);padding:14px 0}
+.post summary{cursor:pointer;list-style:none}.post summary::-webkit-details-marker{display:none}
+.post h3{margin:2px 0;font:700 21px/1.4 "Noto Serif Bengali",serif}
+.meta{font-size:13px;color:var(--muted)}
+.body{max-width:68ch}.body p{margin:12px 0 0}
+.empty{color:var(--muted)}
+#chat-fab{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;border:0;background:var(--accent);color:var(--on);font-size:26px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.3);z-index:20}
+#chat{position:fixed;right:18px;bottom:88px;width:min(380px,calc(100vw - 36px));height:min(520px,70vh);background:var(--surface);border:1px solid var(--line);border-radius:14px;display:none;flex-direction:column;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.3);z-index:20}
+#chat.open{display:flex}
+#chat .top{background:var(--accent);color:var(--on);padding:11px 16px;font-weight:600}
+#msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.m{max-width:88%;padding:8px 13px;border-radius:12px;font-size:15px;white-space:pre-wrap;line-height:1.6}
+.m.u{align-self:flex-end;background:var(--accent);color:var(--on)}
+.m.a{align-self:flex-start;background:var(--bg);border:1px solid var(--line)}
+#cf{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line)}
+#cf input{flex:1;min-width:0;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:9px;font:inherit}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:26px 0 90px;color:var(--muted);font-size:14px;text-align:center}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#top">জ্ঞানপথ</a><nav><a href="#blog">ব্লগ</a><a href="#about">পরিচিতি</a></nav></div></header>
+<main id="top">
+<section class="hero"><div class="wrap">
+<p class="eq" aria-hidden="true">e<sup>iπ</sup> + 1 = 0</p>
+<h1>গণিত ও প্রযুক্তি শেখা হোক <mark>বাংলায়</mark>, সহজ ভাষায়</h1>
+<p>নিয়মিত লেখা, বিনামূল্যে, সবার জন্য। আটকে গেলে এআই সহকারীকে জিজ্ঞাসা করুন।</p>
+<a class="btn" href="#blog">লেখাগুলো পড়ুন</a><button class="btn ghost" id="open-chat">এআই-কে জিজ্ঞাসা করুন</button>
+</div></section>
+<div class="wrap">
+<section id="blog"><h2>লেখা</h2>
+<div class="tools"><input id="q" type="search" placeholder="লেখা খুঁজুন" aria-label="লেখা খুঁজুন"><span id="chips"></span></div>
+<div id="posts"><p class="empty">লেখা লোড হচ্ছে…</p></div></section>
+<section id="about"><h2>পরিচিতি</h2>
+<p>আমি সোহরাব, গণিতে অনার্স করছি। যা শিখছি তা সবার সাথে ভাগ করে নিতেই এই সাইট।</p>
+<p>ভুল চোখে পড়লে বা কোনো বিষয়ে লেখা চাইলে জানাবেন।</p></section>
+</div></main>
+<footer>© ২০২৬ জ্ঞানপথ</footer>
+<button id="chat-fab" aria-label="এআই সহকারী খুলুন">💬</button>
+<div id="chat" role="dialog" aria-label="এআই সহকারী"><div class="top">জ্ঞানপথ এআই সহকারী</div><div id="msgs" aria-live="polite"></div>
+<form id="cf"><input id="ci" placeholder="প্রশ্ন লিখুন…" autocomplete="off" aria-label="প্রশ্ন"><button class="btn" type="submit">পাঠান</button></form></div>
+<script>
+/* ধাপ ৫-এ Cloudflare Worker-এর ঠিকানা এখানে বসান। খালি থাকলে চ্যাট বাটন লুকানো থাকবে। */
+var WORKER_URL = "";
+
+var $=function(s){return document.querySelector(s)}, posts=[], cat="সব";
+function render(){
+  var kw=$("#q").value.trim().toLowerCase(), box=$("#posts"); box.innerHTML="";
+  var list=posts.filter(function(p){return (cat==="সব"||p.cat===cat)&&(!kw||(p.title+p.body).toLowerCase().indexOf(kw)>-1)});
+  if(!list.length){box.innerHTML='<p class="empty">কোনো লেখা পাওয়া যায়নি।</p>';return}
+  list.forEach(function(p){
+    var d=document.createElement("details");d.className="post";
+    var s=document.createElement("summary");
+    s.innerHTML='<span class="meta"></span><h3></h3>';
+    s.querySelector(".meta").textContent=p.cat+" · "+p.date;
+    s.querySelector("h3").textContent=p.title;d.appendChild(s);
+    var b=document.createElement("div");b.className="body";
+    p.body.split(/\n\s*\n/).forEach(function(x){var q=document.createElement("p");q.textContent=x;b.appendChild(q)});
+    d.appendChild(b);box.appendChild(d);
+  });
+}
+function chips(){
+  var cs=["সব"];posts.forEach(function(p){if(cs.indexOf(p.cat)<0)cs.push(p.cat)});
+  var c=$("#chips");c.innerHTML="";
+  cs.forEach(function(n){var b=document.createElement("button");b.className="chip";b.textContent=n;b.setAttribute("aria-pressed",n===cat);
+    b.onclick=function(){cat=n;chips();render()};c.appendChild(b);c.appendChild(document.createTextNode(" "))});
+}
+fetch("posts.json").then(function(r){return r.json()}).then(function(j){posts=j;chips();render()})
+ .catch(function(){$("#posts").innerHTML='<p class="empty">লেখা লোড করা যায়নি। পরে আবার চেষ্টা করুন।</p>'});
+$("#q").addEventListener("input",render);
+
+/* চ্যাটবট */
+var chat=$("#chat"),msgs=$("#msgs"),hist=[],busy=false;
+if(!WORKER_URL){$("#chat-fab").hidden=true;$("#open-chat").hidden=true}
+function add(c,t){var m=document.createElement("div");m.className="m "+c;m.textContent=t;msgs.appendChild(m);msgs.scrollTop=msgs.scrollHeight;return m}
+function toggle(){chat.classList.toggle("open");if(chat.classList.contains("open")&&!msgs.children.length)add("a","আসসালামু আলাইকুম! গণিত, প্রযুক্তি বা পড়াশোনা নিয়ে যা জানতে চান জিজ্ঞাসা করুন।")}
+$("#chat-fab").onclick=toggle;$("#open-chat").onclick=toggle;
+$("#cf").onsubmit=function(e){
+  e.preventDefault();var i=$("#ci"),q=i.value.trim();if(!q||busy)return;
+  i.value="";add("u",q);hist.push({role:"user",text:q});
+  var out=add("a","…");busy=true;
+  fetch(WORKER_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages:hist.slice(-10)})})
+  .then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
+  .then(function(j){out.textContent=j.reply;hist.push({role:"model",text:j.reply})})
+  .catch(function(){out.textContent="উত্তর আনা যায়নি। একটু পরে আবার চেষ্টা করুন।";hist.pop()})
+  .then(function(){busy=false});
+};
+</script>
+</body>
+</html>
